@@ -37,7 +37,7 @@ function calculateResult(item) //Only one argument passed as parameter
 
 console.log(calculateResult(100,200,300,400,500,600)); //Will return only one value, i.e. the first value (100)
 
-
+ 
 function calculate(...item) //Here, rest operator have been used in the function as a parameter, so it can take any number of arguments passed by user.
 {
     return item;
