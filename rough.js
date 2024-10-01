@@ -706,7 +706,7 @@ class LinkedList
         else{
             const node=new Node(value);
             let prev=this.head;
-            for(let i=0;i)
+
         }
     }
     print()
