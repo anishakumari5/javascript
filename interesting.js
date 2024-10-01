@@ -14,3 +14,4 @@ const MyNewFunction=function newFunction()
 {
     return "Hello, this is newFunction()";
 }
+
