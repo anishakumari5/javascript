@@ -78,3 +78,34 @@
 // //Converts to an array the entries keyword
 // console.log(Object.entries(myObj));
 
+//JSON Format: Javascript Object Notation, is mostly of the object format where the key and values are placed in quotes
+//Form in which API exist
+// {
+//     "name":"Anisha",
+//     "age":23,
+//     "city":"Purnea"
+//     "isStudent":false,
+//     "address":{
+//         "street":"123 Avenue",
+//         "city":"Purnea"
+//     }
+//     "hobbies":["video games", "watching series"]
+// }
+
+// //Can also be of array form, containing objects within(Another form in which API's exist):
+// [
+//     {
+//         "address":{
+//         "street":"123 Avenue",
+//         "city":"Purnea"
+//     }
+//     "address":{
+//         "street":"123 Avenue",
+//         "city":"Purnea"
+//     }
+//     }
+// ]
+
+
+
+
