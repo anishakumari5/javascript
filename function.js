@@ -86,3 +86,43 @@ console.log(newFunc(myArray));
 //Arrays can also be passed directly in the form of an argument in a function
 console.log(newFunc([50,40,60,80]));
 
+//Arrow Function
+//Example:
+
+const myArrowFunction = () =>
+{ //After curly braces return keyword must be used
+    console.log(this); //THis would just return an empty object {}, which means that this keyword cannot be used in arrow functions
+    return "Hey it's me"; //THis is the type of explicit return, where return keyword have been used
+}
+
+//Another way to use an arrow function, using implicit return, i.e. without return keyword, along with ()
+
+const myArrowFunc = (num1, num2) => ("Hi the result is: ", num1+num2);
+//Remember in arrow function when {} are used, return is must, and if () is used no need of return keyword
+
+//Another benefit of using a implicit return is that objects can easily be returned from it
+
+const myNewFunc1 = () => {
+    return {
+        name:"Anisha"
+    }
+}
+
+console.log(myNewFunc1()); //THis would also return an object, but it is a long syntax as cimpared to implicit return
+
+const myNewFunc = () => ({name:"Anisha"}); //If () is left, then it gives undefined
+console.log(myNewFunc()); //Successfully returns an object
+
+
+function test1()
+{
+    console.log(this);
+}
+test1(); //This would return a global scope, which means that "this" keyword can be used with a normal function
+
+//But when used with an arrow function "this" keyword would return an empty object, which means that it cannot be used with an arrow function
+const test2 = () => {
+    console.log(this);   
+}
+
+test2(); //Returns an empty object {}
