@@ -126,3 +126,8 @@ const test2 = () => {
 }
 
 test2(); //Returns an empty object {}
+
+
+//Thus arrow function is of this form :
+// () => (); //Implicit
+// () => {}; //Explicit

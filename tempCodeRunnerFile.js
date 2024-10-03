@@ -1,1 +1,1 @@
-console.log(obj.peintHi());
+  privateFunction(); // Error: privateFunction is not defined
