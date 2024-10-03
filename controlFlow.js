@@ -46,13 +46,19 @@ switch (rank) {
 returns null or undefined values, this can be used there.*/
 
 let val1;
-// val1=10??67; //In this case will generate the first value, since it isn't null or undefined
-// val1=null??12; //In this case will generate 12, since the first value is null
-// val1=undefined??33; //In this case will return 33 since the first value is undefined
-//This can also be used with multiple variables or functions
-// val1=null??561??1000; //In this case will return 561 because it's the first value after null
-// val1=null??undefined; //In this case will return undefined, since first value is null
-// val1=undefined??null;//In this case will return null, since the first value is undefined
+val1=10??67; //In this case will generate the first value, since it isn't null or undefined
+val1=null??12; //In this case will generate 12, since the first value is null
+val1=undefined??33; //In this case will return 33 since the first value is undefined
+// This can also be used with multiple variables or functions
+val1=null??561??1000; //In this case will return 561 because it's the first value after null
+val1=null??undefined; //In this case will return undefined, since first value is null
+val1=undefined??null;//In this case will return null, since the first value is undefined
 
-console.log(val1);
+// console.log(val1);
 
+//Ternery Operator
+//Syntax:
+// condition?(If condition true, prints this part):(If condition false print this part)
+const value=900;
+(value<850)?console.log("Value less then 850"):console.log("Value greater then 850");
+//Will hive the output as Value greater then 850, since the condition value<850 is false, as the given value is 900
