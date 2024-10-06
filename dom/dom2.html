@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Methods</title>
+</head>
+<body class="there" style="background-color: #212121; color: #fff;">
+    <div class="parent">
+        <!-- this is a comment -->
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+    <ul class="here">
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+        <li>Fourth</li>
+    </ul>
+</body>
+<script> 
+    /*querySelector is a JavaScript method used to find the first element in a document that matches a specified CSS selector
+    This selector can be a tag name, class name, ID, or any combination of CSS selectors.*/
+    const printIt=document.querySelector(".here") //Selects the first element with class name here, in this case the unordered list
+    // console.log(printIt);
+    //Remember in js parentElement and children keywords are predefined used to select the parent or children of specified element
+    console.log(printIt.children); /*Selects the children element of printIt variable, this gives the lists which is in ul, displays 
+    them in the form of HTMLCollections. Here HTMLCollections can be accessed like arrays, with their indexes but they are not arrays*/
+    
+    
+    const pare = document.querySelector('.parent') //Selects the first element with class named as pare
+    console.log(pare); /*This gives the result stored in the variable pare, which in this case is the first element having parent 
+    class, in this case it is a div element*/
+    console.log(pare.children); /*Gives the children of pare variable, that means the children of div element in this case, display
+    the result in the form of HTMLCollections, in this case they are div element as well, containing names of days*/
+    console.log(pare.children[1].innerHTML); /*Since HTMLCollections can be used as array, a few properties, accessing element of
+    HTMLCollection is one of them, can be accessed with an index enclused in bracket, pare.children[1] gives the second 
+    element of the HTMLCollection, and innerHTML is used to access the HTML within, in this case it's only text, that is Tuesday*/
+
+    for (let i = 0; i < pare.children.length; i++) {
+         console.log(pare.children[i].innerText);
+        /*Since pare.children are HTML collection, for loop can be used on them, here it acceses the innerText enclosed in it*/
+        /*The difference between innerText and innerHTML is that innerText access only text element with which it is enclosed, but
+        innerHTML access the entire thing including other HTML tags associated with it*/
+    }
+    pare.children[1].style.color = "orange" //This basically changes the color of Tuesday to orange, the text color
+    console.log(pare.firstElementChild); /*The keyword firstElementChild is used to print the first child of pare which in this case is 
+    <div class="day">Monday</div>*/
+    console.log(pare.lastElementChild); /*In this case lastlementChild as the name specifies selects the last child of pare variable
+    which in this case is <div class="day">Thursday</div>*/
+
+    const dayOne = document.querySelector('.day') /*Here querySelector have been used, which basically selects the first element, the 
+    parameter passed within it is a class name day(.day), where . indicates the class element, it is stored in dayOne variable*/
+    console.log(dayOne); //The dayOne variable as specified above, in this case <div class="day">Monday</div>
+    console.log(dayOne.parentElement); /*Since parentElement is a predefined keyword, it is used to select the parent of the specified
+    element*/
+    console.log(dayOne.nextElementSibling); /*The keyword nextElementSibling is a predefined keyword which is used to select the 
+    sibling to the variable dayOne, in this case <div class="day">Tuesday</div>*/
+    console.log("NODES: ", pare.childNodes);  /*This is basically used to print the child nodes of the given variable pare which as 
+    mentioned above is the first element of class parent, which in this case is a div containing days name. THe output is in form 
+    of nodes, here there are 11 nodes, a line break is also counted as a childnode in form of text, a comment is also a childnode in
+    form of comment, and further child elements are also included as childNodes in the form of childelement.idName or 
+    childelement.className,in this case it is div.day, where div is further child element having a class name day*/
+
+    const newOne=document.querySelector(".there");
+    console.log(newOne);
+    console.log("Nodes: ",newOne.childNodes);
+    
+</script>
+</html>
