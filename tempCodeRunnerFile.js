@@ -1,1 +1,1 @@
-  privateFunction(); // Error: privateFunction is not defined
+key
