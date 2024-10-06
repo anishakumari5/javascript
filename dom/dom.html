@@ -1,0 +1,36 @@
+<!--Important to understand the structure of the html document helps us to make changes to a document-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Example</title>
+    <style>
+        .bg_color{
+            background-color: black;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body class="bg_color">
+    <p id="myParagraph" class="title">This is a paragraph.</p>
+    <button id="myButton">Click me</button>
+    <h1>This is the first head</h1>
+    <h1>This is the second head</h1>
+    <h1>This is the third head</h1>
+    <h1>This is the fourth head</h1>
+
+    <ul>
+        </ul>
+        <li class="new-class">First List</li>
+        <li class="new-class">Second List</li>
+        <li class="new-class">Third List</li>
+    </ul>
+    <script>
+        var paragraph = document.getElementById("myParagraph");
+        var button = document.getElementById("myButton");
+
+        button.addEventListener("click", function() {
+            paragraph.textContent = "The paragraph has been changed.";
+        });
+    </script>
+</body>
+</html>
