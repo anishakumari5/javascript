@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Methods</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    /*In the function below,it is being used to pass a list in a document.*/
+    function addLanguage(langName){
+        /*A new variable with the name li have been initialized, which is required to create a list element*/
+        const li = document.createElement('li');
+        //The list element is then passed with an innerHTML, which would contain the argument that would be passed on to the function
+        li.innerHTML = `${langName}`
+        /*At the very end the list containing the langName that is passed as an argument to the function, is finally appended to the , element having class name as
+        language, which in this case is an unordered list, hence a new list have been ceated, as the function ends*/
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage("python")
+    addLanguage("typescript")
+    //THe function is executed as the arguments are passed on to them, hence now the page has two more list, at this point, those are python and javascript
+
+    //The function below performs the same task as above, but is less complex and is time efficient
+    function addOptiLanguage(langName){
+        //The list element is then passed with an innerHTML, which would contain the argument that would be passed on to the function
+        const li = document.createElement('li');
+        /*A text node have been created which would contain the value as the argument that would be passed to the function when it is called, which is the 
+        appended as a child to the li variable, which is a list*/
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguage('golang')//Added to the document in form of list
+
+    //Editing the dom structure
+    const secondLang = document.querySelector("li:nth-child(2)") //elementName:nth-child(child Number) is a best way to select the child 
+    /*The above statement contains a secondLang variable which is basically used to select the second child from the list, in this case it is python which was 
+    created above*/
+    console.log(secondLang);//In the console gives the output <li>python</li>
+    // secondLang.innerHTML = "Mojo" //Can also be passed this way, also is a faster way
+    const newli = document.createElement('li') //Creates a new element list
+    newli.textContent = "Mojo" //Adds the text content in the list 
+    secondLang.replaceWith(newli) //Now replaces the previous list with a new list, check the variable names
+    /*For simple text updates: Using secondLang.innerHTML = "Mojo" is better because it’s more efficient and retains all the element's existing properties 
+    and event listeners.
+    For completely replacing an element: Using replaceWith(newli) is better if you want to replace the entire <li> element, especially if the new element 
+    needs different attributes or properties.*/
+    
+    //edit
+    const firstLang = document.querySelector("li:first-child") //Selects the first child of the first element li
+    firstLang.outerHTML = '<li>TypeScript</li>' /*outerHTML is used to replace the entire content both inside and outside, unlike innerHTML, hence an entire 
+    tag is passed*/
+
+
+    //remove
+    const lastLang = document.querySelector('li:last-child') //SElects the last child of the first list element, since querySelector in variable lastLang
+    lastLang.remove() //Removes the lastLang variable which in this case contains the last child of the first list element
+
+</script>
+</html>
