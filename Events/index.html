@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div class="thisIs" >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <!-- <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" onclick="alert('River have been clicked')"></li> -->
+             <!-- Not a good practice to use events within the html tags, as it isn't scalable -->
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+
+    document.getElementById('owl').onclick = function(){
+        alert("owl clicked")
+    }
+    // This is an old practice to directly invoke event to an element in js, it gives less features. better to use event listners
+
+    // attachEvent() //Was used in previous time during the time of internet explorer, to add an event
+    // jQuery - on //.on was used with jQuery framework to attac an event
+   
+    const alertIt=document.getElementById('river');
+    //This is a better and an efficient way to give an event to any element in js, by attaching the event listner
+    alertIt.addEventListener('click',function(){
+        console.log("River have been clicked");
+    },false)
+    /*THe addEventListner basically have three parameter, the type of event, the callback function stating what to do, when an event is 
+    initiated, and The third parameter in an event listener in JavaScript is useCapture, which is false by default. 
+    useCapture determines whether the event listener is executed during the capturing phase or the bubbling phase of event propagation.
+    If you set useCapture to true, the event listener will be executed during the capturing phase. This means that the event will be 
+    handled by the outermost element first, and then by its child elements, and so on.
+    */
+        
+
+    const variable=document.querySelector("#images");
+    variable.addEventListener('click',function(e){ //Here e is an object
+        console.log(e); //This in the concole gives an object whtch have various prototypes 
+        console.log("Current Target",e.currentTarget); 
+        //currentTarget basically displays the element to which currently event listner is attached
+        /*In the above case since event listner is attached to the images id, so the output willl be, the entire ul including comments.
+        */
+        console.log("Target: ",e.target);
+        /*The target is the direct reference of element where the event originated. 
+        In this case:
+        If picture with id japan is clicked then it will give the entire list which in which there is japan in id.
+        */
+    })
+
+
+    function printCoordinates(e)
+    {
+        console.log("Client X: ",e.clientX);
+        console.log("Client Y: ",e.clientY);
+        console.log("Page X: ",e.pageX);
+        console.log("Page Y: ",e.pageY);
+        console.log("Offset X: ",e.offsetX);
+        console.log("Offset Y: ",e.offsetY);
+    }
+    const newVar=document.getElementById("images");
+    newVar.addEventListener('click',printCoordinates);
+
+
+
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    document.getElementById('images').addEventListener('click', function(e){
+        //Here e is the event object
+        /*Usually addEventListner has usually 3 arguments, the type of event, a function that says what to do and useCapture which is 
+        used for event propagation, if it's true the event will be captured and if false the event propagation takes place through 
+        bubbling*/
+        console.log("clicked inside the ul");
+    }, false)
+
+    document.getElementById('owl').addEventListener('click', function(e){
+        console.log("owl clicked");
+        e.stopPropagation()
+        //stopPropagation() is used to stop event from propagating in the bubbling way
+    }, false)
+
+    /*In the two syntax used above is a case of event propagation, when there was no stpPropagation() used inside the owl element
+    the event would propagate in bubbling form, when a user would click on the owl image, this is because event capture is false thus
+    the console would first print 
+   " owl clicked". and then
+    "clicked inside the ul*
+    This is because the event have propagated from the child to the parent. 
+    Ans when stopPropagation() have been used the event stop it's propagation, and so only
+    "owl clicked" will be pronted in the console*/
+    
+    document.getElementById('google').addEventListener('click',function(e){
+        e.preventDefault();
+        //preventDefault() is basically used with any buttons or links to prevent submit or refresh value
+        e.stopPropagation() //Have been used to stop the bubbling way pf propagation, from child to parent element
+        console.log("google clicked");
+    }, false)
+   
+    
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.tagName); //The tagName basically gives the name  of the element on which the event is trigerred
+        //If the event is trigerred on a button the tagName is BUTTON, if on an image the tagName is IMG
+        if (e.target.tagName === 'IMG') {
+            //When the tagline of the target of an event is IMG, then the below functionalities will be performed
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode 
+            //The parentnode of the img in this case is the list element and it needs to be removed, so the parentNode have een selected
+            removeIt.remove()
+            //Simply add the remove() function to directly remove the element
+        }
+    })
+    //removeIt.parentNode.removeChild(removeIt)
+    const form = document.getElementById('myForm');
+
+    // form.addEventListener('submit', function(event) {
+    //     if (!event.defaultPrevented) {
+    //         // The default action (form submission) has not been prevented
+    //         console.log('Form submitted!');
+    //     }
+    // });
+</script>
+</html>

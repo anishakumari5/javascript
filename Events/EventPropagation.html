@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Propagation Example</title>
+</head>
+<body>
+  <div id="outer">
+    <p>This is Outer</p>
+    <div id="middle">
+        <p>THis is middle</p>
+      <div id="inner">Click me</div>
+    </div>
+  </div>
+  <script>
+    const innerDiv = document.getElementById('inner');
+    const middleDiv = document.getElementById('middle');
+    const outerDiv = document.getElementById('outer');
+
+    innerDiv.addEventListener('click', function(event) {
+      console.log('Inner div clicked');
+      event.stopPropagation();
+      /*stopPropagation():
+      The stopPropagation() method is used to prevent an event from propagating further up the DOM tree. When called on an event object, 
+      it stops the event from reaching any parent elements.*/
+    });
+
+    middleDiv.addEventListener('click', function(event) {
+      console.log('Middle div clicked');
+    });
+
+    outerDiv.addEventListener('click', function(event) {
+      console.log('Outer div clicked');
+    });
+  </script>
+</body>
+</html>
+<!--In this example:
+
+Three nested <div> elements are created with IDs inner, middle, and outer.
+Event listeners are attached to each div to log a message when they are clicked.
+The event listener on the innerDiv includes a call to stopPropagation().
+When you click on the innerDiv, the following will happen:
+
+The click event will first be handled by the innerDiv's event listener.
+Inside the innerDiv's event handler, stopPropagation() is called, which prevents the event from bubbling up to the middleDiv and 
+outerDiv.
+As a result, only the message "Inner div clicked" will be logged to the console.
+If you remove the stopPropagation() call from the innerDiv's event handler, the event will bubble up to the middleDiv and outerDiv, 
+and the messages "Inner div clicked", "Middle div clicked", and "Outer div clicked" will all be logged to the console.
+
+-->
