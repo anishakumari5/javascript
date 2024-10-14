@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Project</title>
+</head>
+<body>
+    <h1>This is the project for Async</h1>
+    <button class="butt">Click Me</button>]
+</body>
+<script>
+    const changeText=document.querySelector('h1');
+    const clickOn=document.querySelector('.butt');
+    const TimeOut=setTimeout(function(){
+        changeText.innerHTML='Text Changed';
+        console.log("Changed The Text");
+    },2000);
+    clickOn.addEventListener('click',function(){
+        clearTimeout(TimeOut);
+        console.log('Clicked');
+    })
+</script>
+</html>

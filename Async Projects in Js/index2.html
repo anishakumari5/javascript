@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Another Project for Async</title>
+</head>
+<body>
+    <h1>This is the unchanged Text</h1>
+    <button class="start">Start</button>
+    <button class="stop">Stop</button>
+</body>
+<script>
+    const inConsole=function(){
+        console.log("Anisha");
+    };
+    // const theInterval=function(){
+    //     const Interval=setInterval(inConsole,2000);
+    //     const Stop=document.querySelector('.stop')
+    //     Stop.addEventListener('click',function(){
+    //     clearInterval(Interval);
+    // })
+    // }
+    let Interval;
+    const theInterval=function(){
+        Interval=setInterval(inConsole,1000);
+    };
+
+    const Start=document.querySelector('.start');
+    Start.addEventListener('click',theInterval);
+
+    const Stop = document.querySelector('.stop');
+    const stopInterval=function()
+    {
+        clearInterval(Interval);
+    }
+    Stop.addEventListener('click',stopInterval)
+
+
+    // clearInterval(Interval);
+</script>
+</html>
